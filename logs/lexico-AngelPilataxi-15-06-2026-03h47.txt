@@ -1,0 +1,59 @@
+Análisis: lexico
+Autor: AngelPilataxi
+Fecha: 15-06-2026-03h47
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+[APERTURA_PHP] '<?php' | línea 1 | columna 0
+[FUNCTION] 'function' | línea 3 | columna 7
+[IDENTIFICADOR] 'saludar' | línea 3 | columna 16
+[PARENTESIS_IZQ] '(' | línea 3 | columna 23
+[VARIABLE] '$nombre' | línea 3 | columna 24
+[PARENTESIS_DER] ')' | línea 3 | columna 31
+[LLAVE_IZQ] '{' | línea 3 | columna 33
+[IF] 'if' | línea 4 | columna 39
+[PARENTESIS_IZQ] '(' | línea 4 | columna 42
+[VARIABLE] '$nombre' | línea 4 | columna 43
+[IGUAL_IGUAL] '==' | línea 4 | columna 51
+[LITERAL_CADENA] '"Angel"' | línea 4 | columna 54
+[PARENTESIS_DER] ')' | línea 4 | columna 61
+[LLAVE_IZQ] '{' | línea 4 | columna 63
+[ECHO] 'echo' | línea 5 | columna 73
+[LITERAL_CADENA] '"Hola, "' | línea 5 | columna 78
+[PUNTO] '.' | línea 5 | columna 87
+[VARIABLE] '$nombre' | línea 5 | columna 89
+[PUNTO_Y_COMA] ';' | línea 5 | columna 96
+[LLAVE_DER] '}' | línea 6 | columna 102
+[ELSE] 'else' | línea 6 | columna 104
+[LLAVE_IZQ] '{' | línea 6 | columna 109
+[ECHO] 'echo' | línea 7 | columna 119
+[LITERAL_CADENA] "'Hola, visitante'" | línea 7 | columna 124
+[PUNTO_Y_COMA] ';' | línea 7 | columna 141
+[LLAVE_DER] '}' | línea 8 | columna 147
+[RETURN] 'return' | línea 10 | columna 154
+[TRUE] 'true' | línea 10 | columna 161
+[PUNTO_Y_COMA] ';' | línea 10 | columna 165
+[LLAVE_DER] '}' | línea 11 | columna 167
+[VARIABLE] '$contador' | línea 13 | columna 170
+[ASIGNACION] '=' | línea 13 | columna 180
+[LITERAL_ENTERO] '3' | línea 13 | columna 182
+[PUNTO_Y_COMA] ';' | línea 13 | columna 183
+[WHILE] 'while' | línea 14 | columna 185
+[PARENTESIS_IZQ] '(' | línea 14 | columna 191
+[VARIABLE] '$contador' | línea 14 | columna 192
+[MAYOR_QUE] '>' | línea 14 | columna 202
+[LITERAL_ENTERO] '0' | línea 14 | columna 204
+[PARENTESIS_DER] ')' | línea 14 | columna 205
+[LLAVE_IZQ] '{' | línea 14 | columna 207
+[VARIABLE] '$contador' | línea 15 | columna 213
+[ASIGNACION] '=' | línea 15 | columna 223
+[VARIABLE] '$contador' | línea 15 | columna 225
+[MENOS] '-' | línea 15 | columna 235
+[LITERAL_ENTERO] '1' | línea 15 | columna 237
+[PUNTO_Y_COMA] ';' | línea 15 | columna 238
+[LLAVE_DER] '}' | línea 16 | columna 240
+[CIERRE_PHP] '?>' | línea 18 | columna 243
+
+ERRORES
+------------------------------------------------------------
+Sin errores

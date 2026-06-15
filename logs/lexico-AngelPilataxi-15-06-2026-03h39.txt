@@ -1,0 +1,59 @@
+Analisis: lexico
+Autor: AngelPilataxi
+Fecha: 15-06-2026-03h39
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+[PHP_OPEN] '<?php' | linea 1 | columna 0
+[FUNCTION] 'function' | linea 4 | columna 60
+[ID] 'saludar' | linea 4 | columna 69
+[LPAREN] '(' | linea 4 | columna 76
+[VARIABLE] '$nombre' | linea 4 | columna 77
+[RPAREN] ')' | linea 4 | columna 84
+[LBRACE] '{' | linea 4 | columna 86
+[IF] 'if' | linea 5 | columna 92
+[LPAREN] '(' | linea 5 | columna 95
+[VARIABLE] '$nombre' | linea 5 | columna 96
+[EQ] '==' | linea 5 | columna 104
+[STRING_LITERAL] '"Angel"' | linea 5 | columna 107
+[RPAREN] ')' | linea 5 | columna 114
+[LBRACE] '{' | linea 5 | columna 116
+[ECHO] 'echo' | linea 6 | columna 126
+[STRING_LITERAL] '"Hola, "' | linea 6 | columna 131
+[DOT] '.' | linea 6 | columna 140
+[VARIABLE] '$nombre' | linea 6 | columna 142
+[SEMICOLON] ';' | linea 6 | columna 149
+[RBRACE] '}' | linea 7 | columna 155
+[ELSE] 'else' | linea 7 | columna 157
+[LBRACE] '{' | linea 7 | columna 162
+[ECHO] 'echo' | linea 8 | columna 172
+[STRING_LITERAL] "'Hola, visitante'" | linea 8 | columna 177
+[SEMICOLON] ';' | linea 8 | columna 194
+[RBRACE] '}' | linea 9 | columna 200
+[RETURN] 'return' | linea 11 | columna 207
+[TRUE] 'true' | linea 11 | columna 214
+[SEMICOLON] ';' | linea 11 | columna 218
+[RBRACE] '}' | linea 12 | columna 220
+[VARIABLE] '$contador' | linea 14 | columna 223
+[ASSIGN] '=' | linea 14 | columna 233
+[INT_LITERAL] '3' | linea 14 | columna 235
+[SEMICOLON] ';' | linea 14 | columna 236
+[WHILE] 'while' | linea 15 | columna 238
+[LPAREN] '(' | linea 15 | columna 244
+[VARIABLE] '$contador' | linea 15 | columna 245
+[GT] '>' | linea 15 | columna 255
+[INT_LITERAL] '0' | linea 15 | columna 257
+[RPAREN] ')' | linea 15 | columna 258
+[LBRACE] '{' | linea 15 | columna 260
+[VARIABLE] '$contador' | linea 16 | columna 266
+[ASSIGN] '=' | linea 16 | columna 276
+[VARIABLE] '$contador' | linea 16 | columna 278
+[MINUS] '-' | linea 16 | columna 288
+[INT_LITERAL] '1' | linea 16 | columna 290
+[SEMICOLON] ';' | linea 16 | columna 291
+[RBRACE] '}' | linea 17 | columna 293
+[PHP_CLOSE] '?>' | linea 19 | columna 296
+
+ERRORES
+------------------------------------------------------------
+Sin errores
