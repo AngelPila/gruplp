@@ -54,6 +54,10 @@ tokens = [
     "PUNTO_Y_COMA",
     "COMA",
     "PUNTO",
+    #Angel Cedeño - Inicio de aporte (tokens)
+    "VARIABLE",
+    "CONCATENACION",
+    #Angel Cedeño - Fin d aporte (tokens)
 ]
 
 reserved = {
@@ -143,11 +147,15 @@ def t_MODULO(t):
     return t
 # Sebastian Barco - Fin de aporte (funciones de token)
 
+#Angel Cedeño - Inicio de aporte
+def t_DIVIDIR(t):
+    r'/(?![/*=])'
+    return t
+#Angel Cedeño - Inicio de aporte
 
 def t_IGUAL_IGUAL(t):
     r'=='
     return t
-
 
 def t_DIFERENTE(t):
     r'!='
