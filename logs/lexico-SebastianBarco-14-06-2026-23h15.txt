@@ -1,0 +1,105 @@
+Análisis: lexico
+Autor: SebastianBarco
+Fecha: 14-06-2026-23h15
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+[APERTURA_PHP] '<?php' | línea 1 | columna 0
+[FUNCTION] 'function' | línea 3 | columna 7
+[IDENTIFICADOR] 'clasificar' | línea 3 | columna 16
+[PARENTESIS_IZQ] '(' | línea 3 | columna 26
+[VARIABLE] '$numero' | línea 3 | columna 27
+[PARENTESIS_DER] ')' | línea 3 | columna 34
+[LLAVE_IZQ] '{' | línea 3 | columna 36
+[IF] 'if' | línea 4 | columna 42
+[PARENTESIS_IZQ] '(' | línea 4 | columna 45
+[VARIABLE] '$numero' | línea 4 | columna 46
+[MODULO] '%' | línea 4 | columna 54
+[LITERAL_ENTERO] '2' | línea 4 | columna 56
+[IGUAL_ESTRICTO] '===' | línea 4 | columna 58
+[LITERAL_ENTERO] '0' | línea 4 | columna 62
+[PARENTESIS_DER] ')' | línea 4 | columna 63
+[LLAVE_IZQ] '{' | línea 4 | columna 65
+[RETURN] 'return' | línea 5 | columna 75
+[LITERAL_CADENA] '"par"' | línea 5 | columna 82
+[PUNTO_Y_COMA] ';' | línea 5 | columna 87
+[LLAVE_DER] '}' | línea 6 | columna 93
+[RETURN] 'return' | línea 7 | columna 99
+[LITERAL_CADENA] '"impar"' | línea 7 | columna 106
+[PUNTO_Y_COMA] ';' | línea 7 | columna 113
+[LLAVE_DER] '}' | línea 8 | columna 115
+[VARIABLE] '$suma' | línea 10 | columna 118
+[ASIGNACION] '=' | línea 10 | columna 124
+[LITERAL_ENTERO] '0' | línea 10 | columna 126
+[PUNTO_Y_COMA] ';' | línea 10 | columna 127
+[VARIABLE] '$producto' | línea 11 | columna 129
+[ASIGNACION] '=' | línea 11 | columna 139
+[LITERAL_ENTERO] '1' | línea 11 | columna 141
+[PUNTO_Y_COMA] ';' | línea 11 | columna 142
+[FOR] 'for' | línea 13 | columna 145
+[PARENTESIS_IZQ] '(' | línea 13 | columna 149
+[VARIABLE] '$i' | línea 13 | columna 150
+[ASIGNACION] '=' | línea 13 | columna 153
+[LITERAL_ENTERO] '1' | línea 13 | columna 155
+[PUNTO_Y_COMA] ';' | línea 13 | columna 156
+[VARIABLE] '$i' | línea 13 | columna 158
+[MENOR_IGUAL] '<=' | línea 13 | columna 161
+[LITERAL_ENTERO] '5' | línea 13 | columna 164
+[PUNTO_Y_COMA] ';' | línea 13 | columna 165
+[VARIABLE] '$i' | línea 13 | columna 167
+[INCREMENTO] '++' | línea 13 | columna 169
+[PARENTESIS_DER] ')' | línea 13 | columna 171
+[LLAVE_IZQ] '{' | línea 13 | columna 173
+[VARIABLE] '$suma' | línea 14 | columna 179
+[MAS_IGUAL] '+=' | línea 14 | columna 185
+[VARIABLE] '$i' | línea 14 | columna 188
+[PUNTO_Y_COMA] ';' | línea 14 | columna 190
+[VARIABLE] '$producto' | línea 15 | columna 196
+[POR_IGUAL] '*=' | línea 15 | columna 206
+[VARIABLE] '$i' | línea 15 | columna 209
+[PUNTO_Y_COMA] ';' | línea 15 | columna 211
+[LLAVE_DER] '}' | línea 16 | columna 213
+[VARIABLE] '$resto' | línea 18 | columna 216
+[ASIGNACION] '=' | línea 18 | columna 223
+[LITERAL_ENTERO] '10' | línea 18 | columna 225
+[PUNTO_Y_COMA] ';' | línea 18 | columna 227
+[WHILE] 'while' | línea 19 | columna 229
+[PARENTESIS_IZQ] '(' | línea 19 | columna 235
+[VARIABLE] '$resto' | línea 19 | columna 236
+[MAYOR_QUE] '>' | línea 19 | columna 243
+[LITERAL_ENTERO] '0' | línea 19 | columna 245
+[PARENTESIS_DER] ')' | línea 19 | columna 246
+[LLAVE_IZQ] '{' | línea 19 | columna 248
+[VARIABLE] '$resto' | línea 20 | columna 254
+[MENOS_IGUAL] '-=' | línea 20 | columna 261
+[LITERAL_ENTERO] '3' | línea 20 | columna 264
+[PUNTO_Y_COMA] ';' | línea 20 | columna 265
+[LLAVE_DER] '}' | línea 21 | columna 267
+[VARIABLE] '$contador' | línea 23 | columna 270
+[ASIGNACION] '=' | línea 23 | columna 280
+[LITERAL_ENTERO] '5' | línea 23 | columna 282
+[PUNTO_Y_COMA] ';' | línea 23 | columna 283
+[VARIABLE] '$contador' | línea 24 | columna 285
+[DECREMENTO] '--' | línea 24 | columna 294
+[PUNTO_Y_COMA] ';' | línea 24 | columna 296
+[ECHO] 'echo' | línea 26 | columna 299
+[LITERAL_CADENA] '"Suma: "' | línea 26 | columna 304
+[PUNTO] '.' | línea 26 | columna 313
+[VARIABLE] '$suma' | línea 26 | columna 315
+[PUNTO_Y_COMA] ';' | línea 26 | columna 320
+[ECHO] 'echo' | línea 27 | columna 322
+[LITERAL_CADENA] '"Producto: "' | línea 27 | columna 327
+[PUNTO] '.' | línea 27 | columna 340
+[VARIABLE] '$producto' | línea 27 | columna 342
+[PUNTO_Y_COMA] ';' | línea 27 | columna 351
+[ECHO] 'echo' | línea 28 | columna 353
+[IDENTIFICADOR] 'clasificar' | línea 28 | columna 358
+[PARENTESIS_IZQ] '(' | línea 28 | columna 368
+[VARIABLE] '$suma' | línea 28 | columna 369
+[PARENTESIS_DER] ')' | línea 28 | columna 374
+[PUNTO_Y_COMA] ';' | línea 28 | columna 375
+[CIERRE_PHP] '?>' | línea 30 | columna 378
+
+ERRORES
+------------------------------------------------------------
+Sin errores

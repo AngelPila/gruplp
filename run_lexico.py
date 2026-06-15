@@ -37,6 +37,16 @@ tokens = [
     "MENOS",
     "POR",
     "DIVIDIR",
+    # Sebastian Barco - Inicio de aporte (tokens)
+    "MODULO",
+    "IGUAL_ESTRICTO",
+    "MAS_IGUAL",
+    "MENOS_IGUAL",
+    "POR_IGUAL",
+    "DIV_IGUAL",
+    "INCREMENTO",
+    "DECREMENTO",
+    # Sebastian Barco - Fin de aporte (tokens)
     "PARENTESIS_IZQ",
     "PARENTESIS_DER",
     "LLAVE_IZQ",
@@ -89,6 +99,49 @@ def t_LITERAL_ENTERO(t):
 def t_LITERAL_CADENA(t):
     r"(\"([^\\\n]|(\\.))*?\"|\'([^\\\n]|(\\.))*?\')"
     return t
+
+
+# Sebastian Barco - Inicio de aporte (funciones de token)
+
+def t_IGUAL_ESTRICTO(t):
+    r'==='
+    return t
+
+
+def t_INCREMENTO(t):
+    r'\+\+'
+    return t
+
+
+def t_DECREMENTO(t):
+    r'--'
+    return t
+
+
+def t_MAS_IGUAL(t):
+    r'\+='
+    return t
+
+
+def t_MENOS_IGUAL(t):
+    r'-='
+    return t
+
+
+def t_POR_IGUAL(t):
+    r'\*='
+    return t
+
+
+def t_DIV_IGUAL(t):
+    r'/='
+    return t
+
+
+def t_MODULO(t):
+    r'%'
+    return t
+# Sebastian Barco - Fin de aporte (funciones de token)
 
 
 def t_IGUAL_IGUAL(t):
