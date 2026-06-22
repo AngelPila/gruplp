@@ -1,30 +1,54 @@
 <?php
 
-function clasificar($numero) {
-    if ($numero % 2 === 0) {
-        return "par";
+$nombre = "Sebastian";
+$edad = 21;
+$promedio = 8.5;
+$activo = true;
+$beca = null;
+
+$notas = [9, 7, 8, 10, 6];
+
+function calcularPromedio($notas) {
+    $suma = 0;
+    $total = 0;
+    for ($i = 0; $i < 5; $i++) {
+        $suma += $notas[$i];
+        $total++;
     }
-    return "impar";
+    return $suma / $total;
 }
 
-$suma = 0;
-$producto = 1;
-
-for ($i = 1; $i <= 5; $i++) {
-    $suma += $i;
-    $producto *= $i;
+function obtenerEstado($promedio, $activo) {
+    if ($promedio >= 9 && $activo === true) {
+        return "Excelente y activo";
+    } elseif ($promedio >= 7 || $activo === true) {
+        return "Aprobado";
+    } else {
+        return "Reprobado";
+    }
 }
 
-$resto = 10;
-while ($resto > 0) {
-    $resto -= 3;
+$resultado = calcularPromedio($notas);
+$estado = obtenerEstado($resultado, $activo);
+
+if ($beca === null) {
+    $beca = false;
 }
 
-$contador = 5;
-$contador--;
+if ($beca != false) {
+    echo "Tiene beca";
+} else {
+    print "Sin beca";
+}
 
-echo "Suma: " . $suma;
-echo "Producto: " . $producto;
-echo clasificar($suma);
+$puntaje = 0;
+$puntaje++;
+$puntaje *= 2;
+$puntaje -= 1;
+$puntaje %= 3;
+
+echo "Nombre: " . $nombre;
+echo "Promedio: " . $resultado;
+echo "Estado: " . $estado;
 
 ?>

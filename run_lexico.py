@@ -46,6 +46,13 @@ tokens = [
     "DIV_IGUAL",
     "INCREMENTO",
     "DECREMENTO",
+    "AND_LOGICO",
+    "OR_LOGICO",
+    "NOT_LOGICO",
+    "CORCHETE_IZQ",
+    "CORCHETE_DER",
+    "ELSEIF",
+    "PRINT",
     # Sebastian Barco - Fin de aporte (tokens)
     "PARENTESIS_IZQ",
     "PARENTESIS_DER",
@@ -55,9 +62,8 @@ tokens = [
     "COMA",
     "PUNTO",
     #Angel Cedeño - Inicio de aporte (tokens)
-    "VARIABLE",
     "CONCATENACION",
-    #Angel Cedeño - Fin d aporte (tokens)
+    #Angel Cedeño - Fin de aporte (tokens)
 ]
 
 reserved = {
@@ -71,6 +77,9 @@ reserved = {
     "true": "TRUE",
     "false": "FALSE",
     "null": "NULL",
+    "elseif": "ELSEIF",
+    "print": "PRINT",
+
 }
 # Angel Pilataxi - Fin de aporte
 
@@ -145,6 +154,31 @@ def t_DIV_IGUAL(t):
 def t_MODULO(t):
     r'%'
     return t
+
+def t_AND_LOGICO(t):
+    r'\&\&'
+    return t
+
+
+def t_OR_LOGICO(t):
+    r'\|\|'
+    return t
+
+
+def t_NOT_LOGICO(t):
+    r'!'
+    return t
+
+
+def t_CORCHETE_IZQ(t):
+    r'\['
+    return t
+
+
+def t_CORCHETE_DER(t):
+    r'\]'
+    return t
+
 # Sebastian Barco - Fin de aporte (funciones de token)
 
 #Angel Cedeño - Inicio de aporte
@@ -199,11 +233,6 @@ def t_MENOS(t):
 
 def t_POR(t):
     r'\*'
-    return t
-
-
-def t_DIVIDIR(t):
-    r'/(?![/*])'
     return t
 
 
@@ -322,4 +351,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main() 
