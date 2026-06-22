@@ -1,0 +1,15 @@
+Análisis: sintactico
+Autor: SebasB76
+Fecha: 21-06-2026-22h16
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Error sintáctico: token inesperado '<?php' en línea 1
+Error sintáctico: token inesperado ';' en línea 9
+Error sintáctico: token inesperado '{' en línea 11
+Error sintáctico: token inesperado ';' en línea 18
+Error sintáctico: token inesperado ';' en línea 31

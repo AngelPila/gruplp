@@ -1,0 +1,11 @@
+Análisis: sintactico
+Autor: SebasB76
+Fecha: 21-06-2026-22h18
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Error sintáctico: token inesperado 'for' en línea 14
