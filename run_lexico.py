@@ -64,6 +64,14 @@ tokens = [
     #Angel Cedeño - Inicio de aporte (tokens)
     "CONCATENACION",
     #Angel Cedeño - Fin de aporte (tokens)
+    #Angel Cedeño - Inicio de aporte 2 (Tokens)
+    "FLECHA",
+    "SWITCH",
+    "CASE",
+    "DEFAULT",
+    "BREAK",
+    "DOS_PUNTOS"
+    #Angel Cedeño  Fin de aporte 2 (Tokens)
 ]
 
 reserved = {
@@ -80,6 +88,12 @@ reserved = {
     "stdin": "STDIN",
     "elseif": "ELSEIF",
     "print": "PRINT",
+    # Angel Cedeño - Inicio de aporte 2 (palabras reservadas)
+    "switch": "SWITCH",
+    "case": "CASE",
+    "default": "DEFAULT",
+    "break": "BREAK",
+    # Angel Cedeño - Fin de aporte 2 (palabras reservadas)
 
 }
 # Angel Pilataxi - Fin de aporte
@@ -187,7 +201,16 @@ def t_DIVIDIR(t):
     r'/(?![/*=])'
     return t
 #Angel Cedeño - Inicio de aporte
+#Angel Cedeño - Inicio de aporte 2
+def t_FLECHA(t):
+    r'->'
+    return t
 
+def t_DOS_PUNTOS(t):
+    r':'
+    return t
+
+#Angel Cedeño - Fin de aporte 2
 def t_IGUAL_IGUAL(t):
     r'=='
     return t

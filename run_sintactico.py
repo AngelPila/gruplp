@@ -162,6 +162,42 @@ def p_sino(p):
 
 # Sebastian Barco - Fin de aporte (sintáctico)
 
+# Angel Cedeño - Inicio de aporte (sintáctico)
+ 
+def p_ingreso_teclado(p):
+    '''ingreso_teclado : IDENTIFICADOR PARENTESIS_IZQ STDIN PARENTESIS_DER
+                       | IDENTIFICADOR PARENTESIS_IZQ STDIN COMA LITERAL_ENTERO PARENTESIS_DER'''
+ 
+ 
+def p_expresion_ingreso(p):
+    'expresion : ingreso_teclado'
+ 
+ 
+def p_asignacion_array(p):
+    '''asignacion_array : VARIABLE CORCHETE_IZQ expresion CORCHETE_DER ASIGNACION expresion PUNTO_Y_COMA
+                        | VARIABLE CORCHETE_IZQ CORCHETE_DER ASIGNACION expresion PUNTO_Y_COMA'''
+ 
+def p_switch(p):
+    'switch : SWITCH PARENTESIS_IZQ expresion PARENTESIS_DER LLAVE_IZQ casos LLAVE_DER'
+ 
+ 
+def p_casos(p):
+    '''casos : casos caso
+             | caso'''
+ 
+ 
+def p_caso(p):
+    '''caso : CASE expresion DOS_PUNTOS bloque
+            | CASE expresion DOS_PUNTOS bloque break_sentencia
+            | DEFAULT DOS_PUNTOS bloque
+            | DEFAULT DOS_PUNTOS bloque break_sentencia'''
+ 
+ 
+def p_break_sentencia(p):
+    'break_sentencia : BREAK PUNTO_Y_COMA'
+
+# Angel Cedeño - Fin de aporte (sintáctico)
+ 
 
 def p_programa(p):
     '''programa : APERTURA_PHP bloque CIERRE_PHP
