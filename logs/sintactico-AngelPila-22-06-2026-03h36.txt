@@ -1,0 +1,11 @@
+Análisis: sintactico
+Autor: AngelPila
+Fecha: 22-06-2026-03h36
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Sin errores

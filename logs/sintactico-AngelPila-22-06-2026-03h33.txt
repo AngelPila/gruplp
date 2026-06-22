@@ -1,0 +1,11 @@
+Análisis: sintactico
+Autor: AngelPilataxi
+Fecha: 22-06-2026-03h33
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Sin errores

@@ -23,6 +23,7 @@ tokens = [
     "TRUE",
     "FALSE",
     "NULL",
+    "STDIN",
     "LITERAL_ENTERO",
     "LITERAL_DECIMAL",
     "LITERAL_CADENA",
@@ -60,7 +61,6 @@ tokens = [
     "LLAVE_DER",
     "PUNTO_Y_COMA",
     "COMA",
-    "PUNTO",
     #Angel Cedeño - Inicio de aporte (tokens)
     "CONCATENACION",
     #Angel Cedeño - Fin de aporte (tokens)
@@ -77,6 +77,7 @@ reserved = {
     "true": "TRUE",
     "false": "FALSE",
     "null": "NULL",
+    "stdin": "STDIN",
     "elseif": "ELSEIF",
     "print": "PRINT",
 
@@ -268,6 +269,7 @@ def t_COMA(t):
 
 def t_PUNTO(t):
     r'\.'
+    t.type = 'CONCATENACION'
     return t
 
 

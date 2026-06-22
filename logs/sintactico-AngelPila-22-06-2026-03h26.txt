@@ -1,0 +1,11 @@
+Análisis: sintactico
+Autor: AngelPilataxi
+Fecha: 22-06-2026-03h26
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Error sintáctico: token inesperado '.' en línea 5
