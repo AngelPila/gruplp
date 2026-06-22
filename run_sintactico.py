@@ -206,12 +206,14 @@ def p_programa(p):
 
 def p_bloque(p):
     '''bloque : bloque sentencia
-              | sentencia'''
+              | sentencia
+              | vacio'''
 
 
 def p_sentencia(p):
     '''sentencia : asignacion
                  | asignacion_compuesta
+                 | asignacion_array
                  | si
                  | while
                  | for
