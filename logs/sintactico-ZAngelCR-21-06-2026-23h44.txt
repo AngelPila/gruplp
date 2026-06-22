@@ -1,0 +1,11 @@
+Análisis: sintactico
+Autor: ZAngelCR
+Fecha: 21-06-2026-23h44
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Error sintáctico: token inesperado ',' en línea 14
