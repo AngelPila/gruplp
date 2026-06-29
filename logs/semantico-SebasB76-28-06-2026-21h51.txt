@@ -1,0 +1,11 @@
+Análisis: semantico
+Autor: SebasB76
+Fecha: 28-06-2026-21h51
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Sin errores

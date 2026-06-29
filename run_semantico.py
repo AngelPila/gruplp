@@ -5,13 +5,15 @@ import ply.yacc as yacc
 from logger import generar_log
 from run_lexico import construir_lexer, tokens
 
-errores_sintacticos = []
+# Lista donde se acumulan los errores semánticos encontrados
+errores_semanticos = []
 
 # Sebastian Barco - Inicio de aporte (semántico)
-errores_semanticos = []        
-tabla_variables = {}           
-tabla_funciones = {}           
+# Tabla de símbolos: aquí se anotan los identificadores declarados.
+tabla_variables = {}   # variables declaradas: { "$edad": True, ... }
+tabla_funciones = {}   # funciones declaradas: { "suma": True, ... }
 # Sebastian Barco - Fin de aporte (semántico)
+
 
 start = 'programa'
 
@@ -32,7 +34,6 @@ def p_error(p):
         msg = f"Error sintáctico: token inesperado '{p.value}' en línea {p.lineno}"
     else:
         msg = "Error sintáctico: fin de archivo inesperado"
-    errores_sintacticos.append(msg)
     print(msg)
 
 
@@ -51,21 +52,10 @@ def p_expresion(p):
                  | FALSE
                  | NULL
                  | STDIN'''
-    
-def p_expresion_variable(p):
-    'expresion : VARIABLE'
-    if p[1] not in tabla_variables:
-        errores_semanticos.append(
-            f"Error semantico [Identificador]: la variable {p[1]} no ha sido declarada antes de su uso"
-        )
+
 
 def p_expresion_llamada(p):
     'expresion : IDENTIFICADOR PARENTESIS_IZQ argumentos PARENTESIS_DER'
-    if p[1] not in tabla_funciones:
-        errores_semanticos.append(
-            f"Error semantico [Identificador]: la funcion {p[1]}() no ha sido declarada antes de su llamada"
-        )
-
 
 
 def p_expresion_llamada_vacia(p):
@@ -110,11 +100,6 @@ def p_condicion(p):
                  | expresion'''
 
 
-def p_funcion(p):
-    '''funcion : FUNCTION IDENTIFICADOR PARENTESIS_IZQ parametros PARENTESIS_DER LLAVE_IZQ bloque LLAVE_DER
-               | FUNCTION IDENTIFICADOR PARENTESIS_IZQ PARENTESIS_DER LLAVE_IZQ bloque LLAVE_DER'''
-    tabla_funciones[p[2]] = True
-
 def p_parametros(p):
     '''parametros : parametros COMA parametro
                   | parametro'''
@@ -123,7 +108,6 @@ def p_parametros(p):
 def p_parametro(p):
     '''parametro : VARIABLE
                  | VARIABLE ASIGNACION expresion'''
-    tabla_variables[p[1]] = True   # Sebastian Barco: un parámetro también declara la variable
 
 
 def p_vacio(p):
@@ -163,9 +147,6 @@ def p_for_actualizacion(p):
                          | vacio'''
 
 
-# Sebastian Barco - Inicio de aporte (sintáctico)
-
-
 def p_si(p):
     '''si : IF PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ bloque LLAVE_DER
           | IF PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ bloque LLAVE_DER sino'''
@@ -177,44 +158,39 @@ def p_sino(p):
             | ELSEIF PARENTESIS_IZQ condicion PARENTESIS_DER LLAVE_IZQ bloque LLAVE_DER sino'''
 
 
-# Sebastian Barco - Fin de aporte (sintáctico)
-
-# Angel Cedeño - Inicio de aporte (sintáctico)
- 
 def p_ingreso_teclado(p):
     '''ingreso_teclado : IDENTIFICADOR PARENTESIS_IZQ STDIN PARENTESIS_DER
                        | IDENTIFICADOR PARENTESIS_IZQ STDIN COMA LITERAL_ENTERO PARENTESIS_DER'''
- 
- 
+
+
 def p_expresion_ingreso(p):
     'expresion : ingreso_teclado'
- 
- 
+
+
 def p_asignacion_array(p):
     '''asignacion_array : VARIABLE CORCHETE_IZQ expresion CORCHETE_DER ASIGNACION expresion PUNTO_Y_COMA
                         | VARIABLE CORCHETE_IZQ CORCHETE_DER ASIGNACION expresion PUNTO_Y_COMA'''
- 
+
+
 def p_switch(p):
     'switch : SWITCH PARENTESIS_IZQ expresion PARENTESIS_DER LLAVE_IZQ casos LLAVE_DER'
- 
- 
+
+
 def p_casos(p):
     '''casos : casos caso
              | caso'''
- 
- 
+
+
 def p_caso(p):
     '''caso : CASE expresion DOS_PUNTOS bloque
             | CASE expresion DOS_PUNTOS bloque break_sentencia
             | DEFAULT DOS_PUNTOS bloque
             | DEFAULT DOS_PUNTOS bloque break_sentencia'''
- 
- 
+
+
 def p_break_sentencia(p):
     'break_sentencia : BREAK PUNTO_Y_COMA'
 
-# Angel Cedeño - Fin de aporte (sintáctico)
- 
 
 def p_programa(p):
     '''programa : APERTURA_PHP bloque CIERRE_PHP
@@ -234,17 +210,12 @@ def p_sentencia(p):
                  | si
                  | while
                  | for
+                 | switch
                  | funcion
                  | retorno
                  | impresion
                  | incremento
                  | expresion PUNTO_Y_COMA'''
-
-
-def p_asignacion(p):
-    '''asignacion : VARIABLE ASIGNACION expresion PUNTO_Y_COMA
-                  | VARIABLE ASIGNACION condicion PUNTO_Y_COMA'''
-    tabla_variables[p[1]] = True
 
 
 def p_asignacion_compuesta(p):
@@ -262,76 +233,8 @@ def p_impresion(p):
 def p_incremento(p):
     '''incremento : VARIABLE INCREMENTO PUNTO_Y_COMA
                   | VARIABLE DECREMENTO PUNTO_Y_COMA'''
+    
 
+#Sebastian Barco Reglas Semanticas:
 
-parser = yacc.yacc()
-
-
-def analizar_archivo(ruta_archivo, nombre_autor):
-    global errores_sintacticos
-    errores_sintacticos = []
-
-    with open(ruta_archivo, 'r', encoding='utf-8') as f:
-        codigo = f.read()
-
-    lexer = construir_lexer()
-    parser.parse(codigo, lexer=lexer)
-
-    ruta_log = generar_log(
-        tipo_analisis="sintactico",
-        nombre=nombre_autor,
-        tokens_encontrados=[],
-        errores=errores_sintacticos,
-    )
-
-    if errores_sintacticos:
-        print(f"\n{len(errores_sintacticos)} error(es) encontrado(s)")
-    else:
-        print("\nAnalisis sintactico correcto")
-
-    print(f"Log generado en: {ruta_log}")
-
-
-# Sebastian Barco - Inicio de aporte (semántico)
-def analizar_semantico(ruta_archivo, nombre_autor):
-    global errores_sintacticos, errores_semanticos
-    # Reiniciar el estado para cada análisis
-    errores_sintacticos = []
-    errores_semanticos = []
-    tabla_variables.clear()
-    tabla_funciones.clear()
-
-    with open(ruta_archivo, 'r', encoding='utf-8') as f:
-        codigo = f.read()
-
-    lexer = construir_lexer()
-    parser.parse(codigo, lexer=lexer)
-
-    ruta_log = generar_log(
-        tipo_analisis="semantico",
-        nombre=nombre_autor,
-        tokens_encontrados=[],
-        errores=errores_semanticos,
-    )
-
-    if errores_semanticos:
-        print(f"\n{len(errores_semanticos)} error(es) semantico(s) encontrado(s)")
-    else:
-        print("\nAnalisis semantico correcto")
-
-    print(f"Log generado en: {ruta_log}")
-# Sebastian Barco - Fin de aporte (semántico)
-
-
-def main():
-    if len(sys.argv) < 3:
-        print("Uso: python run_sintactico.py <archivo.php> <NombreApellido>")
-        sys.exit(1)
-
-    ruta_archivo = sys.argv[1]
-    nombre_autor = sys.argv[2]
-    analizar_semantico(ruta_archivo, nombre_autor)
-
-
-if __name__ == "__main__":
-    main()
+def p_
