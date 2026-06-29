@@ -1,0 +1,11 @@
+Análisis: semantico
+Autor: ZAngelCR
+Fecha: 28-06-2026-23h44
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Sin errores

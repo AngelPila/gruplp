@@ -14,6 +14,10 @@ tabla_variables = {}   # variables declaradas: { "$edad": True, ... }
 tabla_funciones = {}   # funciones declaradas: { "suma": True, ... }
 # Sebastian Barco - Fin de aporte (semántico)
 
+# Angel Cedeño - Inicio de aporte (semántico)
+# Tabla de constantes: registra los nombres declarados con 'const'.
+tabla_constantes = {}
+# Angel Cedeño - Fin de aporte (semántico)
 
 start = 'programa'
 
@@ -76,6 +80,42 @@ def p_expresion(p):
             )
         p[0] = None
 # Angel Pila - Fin de aporte (semántico)
+
+# Angel Cedeño - Inicio de aporte (semántico)
+        op_tipo = p.slice[2].type
+        izq = p[1] if isinstance(p[1], dict) else {'valor': None, 'tipo': None}
+        der = p[3] if isinstance(p[3], dict) else {'valor': None, 'tipo': None}
+        if op_tipo in ('MAS', 'MENOS', 'POR', 'DIVIDIR', 'MODULO'):
+            tipo_izq = izq.get('tipo') if izq else None
+            tipo_der = der.get('tipo') if der else None
+            if tipo_izq == 'cadena':
+                errores_semanticos.append(
+                    f"Error semántico [Tipo incompatible]: "
+                    f"el operando izquierdo de '{p[2]}' es una cadena; "
+                    f"se esperaba un valor numérico (int/float)"
+                )
+            if tipo_der == 'cadena':
+                errores_semanticos.append(
+                    f"Error semántico [Tipo incompatible]: "
+                    f"el operando derecho de '{p[2]}' es una cadena; "
+                    f"se esperaba un valor numérico (int/float)"
+                )
+            if tipo_izq == 'bool':
+                errores_semanticos.append(
+                    f"Error semántico [Tipo incompatible]: "
+                    f"el operando izquierdo de '{p[2]}' es un booleano; "
+                    f"se esperaba un valor numérico (int/float)"
+                )
+            if tipo_der == 'bool':
+                errores_semanticos.append(
+                    f"Error semántico [Tipo incompatible]: "
+                    f"el operando derecho de '{p[2]}' es un booleano; "
+                    f"se esperaba un valor numérico (int/float)"
+                )
+ 
+        p[0] = {'valor': None, 'tipo': None}
+# Angel Cedeño - Fin de aporte (semántico)
+
 
 
 # Sebastian Barco - Regla semántica: variable usada antes de ser declarada
@@ -266,10 +306,31 @@ def p_sentencia(p):
                  | incremento
                  | expresion PUNTO_Y_COMA'''
 
+# Angel Cedeño - Inicio de aporte (semántico)
+def p_sentencia_const(p):
+    'sentencia : CONST IDENTIFICADOR ASIGNACION expresion PUNTO_Y_COMA'
+    nombre = p[2]
+    if nombre in tabla_constantes:
+        errores_semanticos.append(
+            f"Error semántico [Constante no reasignable]: "
+            f"la constante '{nombre}' ya fue declarada y no puede redefinirse"
+        )
+    else:
+        tabla_constantes[nombre] = True
+# Angel Cedeño - Fin de aporte (semántico)
 
 def p_asignacion(p):
     '''asignacion : VARIABLE ASIGNACION expresion PUNTO_Y_COMA
                   | VARIABLE ASIGNACION condicion PUNTO_Y_COMA'''
+    # Angel Cedeño - Inicio de aporte (semántico)
+    nombre_sin_signo = p[1].lstrip('$')
+    if nombre_sin_signo in tabla_constantes:
+        errores_semanticos.append(
+            f"Error semántico [Constante no reasignable]: "
+            f"intento de reasignar la constante '{nombre_sin_signo}' "
+            f"usando la variable {p[1]}"
+        )
+    # Angel Cedeño - Fin de aporte (semántico)
     tabla_variables[p[1]] = True
 
 
@@ -278,7 +339,15 @@ def p_asignacion_compuesta(p):
                             | VARIABLE MENOS_IGUAL expresion PUNTO_Y_COMA
                             | VARIABLE POR_IGUAL expresion PUNTO_Y_COMA
                             | VARIABLE DIV_IGUAL expresion PUNTO_Y_COMA'''
-
+    # Angel Cedeño - Inicio de aporte (semántico)
+    nombre_sin_signo = p[1].lstrip('$')
+    if nombre_sin_signo in tabla_constantes:
+        errores_semanticos.append(
+            f"Error semántico [Constante no reasignable]: "
+            f"intento de modificar la constante '{nombre_sin_signo}' "
+            f"con operador compuesto '{p[2]}' sobre {p[1]}"
+        )
+    # Angel Cedeño - Fin de aporte (semántico)
 
 def p_impresion(p):
     '''impresion : ECHO expresion PUNTO_Y_COMA
@@ -315,6 +384,9 @@ def analizar_semantico(ruta_archivo, nombre_autor):
     errores_semanticos = []
     tabla_variables.clear()
     tabla_funciones.clear()
+    # Angel Cedeño - Inicio de aporte (semántico)
+    tabla_constantes.clear()
+    # Angel Cedeño - Fin de aporte (semántico)
 
     with open(ruta_archivo, 'r', encoding='utf-8') as f:
         codigo = f.read()
