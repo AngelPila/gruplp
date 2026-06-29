@@ -1,0 +1,11 @@
+Análisis: semantico
+Autor: ZAngelCR
+Fecha: 28-06-2026-23h59
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Error semántico [Identificador]: la función define() no ha sido declarada antes de su llamada

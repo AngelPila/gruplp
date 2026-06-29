@@ -79,9 +79,9 @@ def p_expresion(p):
                 f"operación '{p[2]}' con divisor literal 0"
             )
         p[0] = None
-# Angel Pila - Fin de aporte (semántico)
+        # Angel Pila - Fin de aporte (semántico)
 
-# Angel Cedeño - Inicio de aporte (semántico)
+        # Angel Cedeño - Inicio de aporte (semántico)
         op_tipo = p.slice[2].type
         izq = p[1] if isinstance(p[1], dict) else {'valor': None, 'tipo': None}
         der = p[3] if isinstance(p[3], dict) else {'valor': None, 'tipo': None}

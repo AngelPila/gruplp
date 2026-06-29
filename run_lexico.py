@@ -70,8 +70,9 @@ tokens = [
     "CASE",
     "DEFAULT",
     "BREAK",
-    "DOS_PUNTOS"
+    "DOS_PUNTOS",
     #Angel Cedeño  Fin de aporte 2 (Tokens)
+    "CONST"
 ]
 
 reserved = {
