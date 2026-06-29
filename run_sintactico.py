@@ -234,6 +234,7 @@ def p_sentencia(p):
                  | si
                  | while
                  | for
+                 | switch
                  | funcion
                  | retorno
                  | impresion

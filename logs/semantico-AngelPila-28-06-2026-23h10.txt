@@ -1,0 +1,13 @@
+Análisis: semantico
+Autor: AngelPila
+Fecha: 28-06-2026-23h10
+
+TOKENS RECONOCIDOS
+------------------------------------------------------------
+Sin tokens reconocidos
+
+ERRORES
+------------------------------------------------------------
+Error semántico [División por cero]: operación '/' con divisor literal 0
+Error semántico [División por cero]: operación '%' con divisor literal 0
+Error semántico [Función redeclarada]: la función 'calcular()' ya fue declarada anteriormente
